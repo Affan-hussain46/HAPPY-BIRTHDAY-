@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafiya Jaan ❤️ Birthday Surprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: radial-gradient(ellipse at top, #70275f, #291239 48%, #090617);
+}
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.star {
+    position: absolute;
+    color: #ffe6a8;
+    animation: twinkle 2s infinite ease-in-out;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: .2; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+.heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 2;
+    pointer-events: none;
+    animation: floatHeart linear forwards;
+}
+@keyframes floatHeart {
+    from { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    to { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+.scene {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px 100px;
+    text-align: center;
+}
+.countdown-box {
+    animation: appear 1s ease;
+}
+.countdown-title {
+    color: #ffd4f0;
+    font-size: clamp(20px, 4.5vw, 32px);
+    font-weight: 600;
+    line-height: 1.6;
+    text-shadow: 0 0 20px #ff56c9;
+    margin-bottom: 22px;
+}
+.count-number {
+    font-size: clamp(100px, 25vw, 190px);
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 25px #ff65c7, 0 0 70px #ff3eac;
+    animation: numberPop .8s ease;
+}
+.count-subtitle {
+    color: #ffe7fa;
+    font-size: clamp(12px, 3vw, 17px);
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+@keyframes numberPop {
+    from { transform: scale(.3); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    to { transform: scale(1); }
+}
+.cake-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    animation: appear 1.2s ease;
+}
+.cake-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(37px, 8vw, 65px);
+    color: #ffd1ed;
+    text-shadow: 0 0 20px #ff4fbf;
+    margin-bottom: 5px;
+}
+.cake {
+    position: relative;
+    width: min(390px, 92vw);
+    height: 350px;
+    margin: 0 auto 10px;
+    filter: drop-shadow(0 15px 25px #0005);
+}
+.cake-base {
+    position: absolute;
+    bottom: 35px;
+    left: 2%;
+    width: 96%;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #fff8ff, #d7b7e5);
+    box-shadow: 0 10px 25px #0005;
+}
+.cake-body {
+    position: absolute;
+    bottom: 55px;
+    left: 10%;
+    width: 80%;
+    height: 155px;
+    border-radius: 18px 18px 25px 25px;
+    background: linear-gradient(
+        90deg,
+        #b83279,
+        #f78cc5 22%,
+        #ffe0f0 48%,
+        #f78cc5 75%,
+        #b83279
+    );
+    border: 3px solid #ffd5ed;
+    box-shadow: inset 0 0 20px #fff8;
+}
+.cake-body::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #fff1fa;
+}
+.cake-body::after {
+    content: "";
+    position: absolute;
+    top: 95px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #fff1fa;
+}
+.cake-top {
+    position: absolute;
+    top: 105px;
+    left: 7%;
+    width: 86%;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff9ff, #ffb7de, #fff2fb);
+    border: 4px solid #fff0ff;
+    z-index: 5;
+}
+.cake-top::after {
+    content: "";
+    position: absolute;
+    left: 3%;
+    top: 30px;
+    width: 94%;
+    height: 22px;
+    border-radius: 0 0 50% 50%;
+    background: #ffb1da;
+}
+/* Birthday message on the cake */
+.cake-writing {
+    position: absolute;
+    z-index: 8;
+    top: 120px;
+    left: 12%;
+    width: 76%;
+    transform: rotate(-2deg);
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(15px, 4vw, 21px);
+    line-height: 1.45;
+    color: #b51668;
+    text-shadow: 1px 1px 0 #fff;
+}
+.cake-writing strong {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(30px, 7vw, 43px);
+    line-height: 1.25;
+    color: #7a167d;
+    text-shadow: 0 0 8px #fff, 0 0 15px #ff82cb;
+}
+.cake-writing small {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #a02368;
+    margin-top: 5px;
+}
+/* Three visible candles */
+.candle {
+    position: absolute;
+    top: 38px;
+    width: 13px;
+    height: 65px;
+    border-radius: 4px;
+    z-index: 9;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff 0px,
+        #fff 6px,
+        #ff55a7 6px,
+        #ff55a7 12px
+    );
+    box-shadow: 0 0 5px #fff8;
+}
+.candle:nth-of-type(1) { left: 34%; }
+.candle:nth-of-type(2) { left: 48%; }
+.candle:nth-of-type(3) { left: 62%; }
+.flame {
+    position: absolute;
+    width: 17px;
+    height: 25px;
+    left: -2px;
+    top: -25px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: radial-gradient(circle at 35% 35%, #fff, #ffef78 40%, #ff7b00 75%);
+    box-shadow: 0 0 15px #ffb52e, 0 0 30px #ff8a00;
+    animation: flicker .2s infinite alternate;
+}
+@keyframes flicker {
+    from { transform: rotate(-45deg) scale(1); }
+    to { transform: rotate(-40deg) scale(1.12); }
+}
+.flame.out {
+    display: none;
+}
+.slice {
+    position: absolute;
+    z-index: 10;
+    bottom: 70px;
+    left: 42%;
+    width: 65px;
+    height: 95px;
+    background: linear-gradient(90deg, #ffb6d9, #e55a9d);
+    border: 2px solid #fff0f8;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+    opacity: 0;
+    transition: transform 1.5s ease, opacity .5s ease;
+}
+.slice.cut {
+    opacity: 1;
+    transform: translate(105px, -15px) rotate(12deg);
+}
+.cake-caption {
+    color: #ffe6f5;
+    font-size: 13px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+/* Final birthday message */
+.final-message {
+    display: none;
+    width: min(750px, 95vw);
+    padding: clamp(25px, 5vw, 45px);
+    border: 1px solid #ffb8e7;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ffffff20, #ff9cdb16);
+    box-shadow: 0 0 40px #ff42b655, inset 0 0 25px #ffffff08;
+    backdrop-filter: blur(12px);
+    animation: finalReveal 1.5s ease forwards;
+    margin: auto;
+}
+.final-message h1 {
+    font-family: 'Great Vibes', cursive;
+    color: #ffd0ee;
+    font-size: clamp(35px, 8vw, 65px);
+    line-height: 1.2;
+    text-shadow: 0 0 25px #ff3bb6;
+    margin-bottom: 15px;
+}
+.final-message h2 {
+    color: #fff;
+    font-size: clamp(24px, 6vw, 43px);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    text-shadow: 0 0 18px #ff5ac5;
+    overflow-wrap: anywhere;
+}
+.final-message h2 span {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(38px, 9vw, 65px);
+    color: #ffb4e2;
+    text-shadow: 0 0 18px #ff56c9;
+}
+.final-message p {
+    color: #fff0fa;
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 1.9;
+}
+.glow-line {
+    width: 100px;
+    height: 3px;
+    margin: 20px auto;
+    background: linear-gradient(90deg, transparent, #ff91d8, transparent);
+    box-shadow: 0 0 15px #ff62c8;
+}
+.final-heart {
+    font-size: clamp(30px, 8vw, 48px);
+    margin-top: 20px;
+    animation: heartbeat 1s infinite;
+}
+.home-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 30px;
+    border: 2px solid #ffd0ee;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #ff65bd, #a52b94);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 20px #ff52bd88;
+    transition: transform .25s, box-shadow .25s;
+}
+.home-button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px #ff52bd;
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes finalReveal {
+    from { opacity: 0; transform: scale(.75) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (max-height: 700px) {
+    .scene {
+        align-items: flex-start;
+        padding-top: 18px;
+    }
+    .cake {
+        transform: scale(.83);
+        transform-origin: top center;
+        margin-bottom: -45px;
+    }
+    .cake-heading {
+        font-size: 36px;
+    }
+    .final-message {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+<canvas id="fireworks"></canvas>
+<div class="stars" id="stars"></div>
+<main class="scene">
+    <div class="countdown-box" id="countdownBox">
+        <div class="countdown-title">
+            A Surprise Is Waiting for You, Jaan ❤️
+        </div>
+        <div class="count-number" id="countNumber">5</div>
+        <div class="count-subtitle">
+            GET READY, RAFIYA JAAN ✨
+        </div>
+    </div>
+    <section class="cake-section" id="cakeSection">
+        <div class="cake-heading">Make a Wish, Jaan!</div>
+        <div class="cake">
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-body"></div>
+            <div class="cake-writing">
+                Happy B'day
+                <strong>Rafiya Jaan</strong>
+                <small>MADE WITH LOVE ❤️</small>
+            </div>
+            <div class="slice" id="cakeSlice"></div>
+            <div class="cake-base"></div>
+        </div>
+        <div class="cake-caption" id="cakeCaption">
+            Close your eyes and make your sweetest wish 💖
+        </div>
+    </section>
+    <section class="final-message" id="finalMessage">
+        <h1>A Special Day for Someone Special</h1>
+        <div class="glow-line"></div>
+        <h2>
+            Happy Birthday
+            <span>Miss Dr. Rafiya Mahveen</span>
+        </h2>
+        <p>
+            Happy 21st Birthday, mei Jaan Rafiya! ❤️🎂✨
+            <br>
+            May your life always be filled with happiness,
+            beautiful memories, endless success and all the love
+            your heart deserves.
+            <br>
+            Keep shining and keep chasing every dream.
+            You deserve all the beautiful things life has to offer. 💖
+            <br>
+          At the end i just want to say that  <br>
+Happy birthday rafiya mahveen 🎂 🥰 <br>
+And I LOVE YOU RAFIYA FOREVER  😘❤️🫶🏻 <br>
+        </p>
+        <div class="glow-line"></div>
+        <div class="final-heart">💗✨🎂✨💗</div>
+        <a href="index.html" class="home-button">
+            🏠 Back to Home
+        </a>
+    </section>
+</main>
+<script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+let width;
+let height;
+let particles = [];
+let fireworksActive = false;
+function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+class Particle {
+    constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.angle = random(0, Math.PI * 2);
+        this.speed = random(1, 6);
+        this.friction = 0.97;
+        this.gravity = 0.045;
+        this.alpha = 1;
+        this.decay = random(0.009, 0.018);
+        this.radius = random(1.5, 3);
+    }
+    update() {
+        this.speed *= this.friction;
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed + this.gravity;
+        this.alpha -= this.decay;
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(this.alpha, 0);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.restore();
+    }
+}
+function createFirework(x, y) {
+    const colors = [
+        "#ff65c7",
+        "#ffd166",
+        "#ffffff",
+        "#ff8a5b",
+        "#c77dff",
+        "#80ffdb",
+        "#ffb3de"
+    ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    for (let i = 0; i < 95; i++) {
+        particles.push(new Particle(x, y, color));
+    }
+}
+function animateFireworks() {
+    ctx.clearRect(0, 0, width, height);
+    if (fireworksActive && Math.random() < 0.08) {
+        createFirework(
+            random(width * 0.1, width * 0.9),
+            random(height * 0.08, height * 0.55)
+        );
+    }
+    for (let i = particles.length - 1; i >= 0; i--) {
+        const particle = particles[i];
+        particle.update();
+        particle.draw();
+        if (particle.alpha <= 0) {
+            particles.splice(i, 1);
+        }
+    }
+    requestAnimationFrame(animateFireworks);
+}
+animateFireworks();
+function grandFireworksShow() {
+    fireworksActive = true;
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            createFirework(
+                random(width * 0.1, width * 0.9),
+                random(height * 0.08, height * 0.55)
+            );
+        }, i * 180);
+    }
+}
+function makeStars() {
+    const container = document.getElementById("stars");
+    for (let i = 0; i < 65; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.textContent = Math.random() > 0.5 ? "✦" : "·";
+        star.style.left = random(0, 100) + "%";
+        star.style.top = random(0, 100) + "%";
+        star.style.fontSize = random(8, 22) + "px";
+        star.style.animationDelay = random(0, 3) + "s";
+        container.appendChild(star);
+    }
+}
+makeStars();
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    const hearts = ["💗", "💖", "💕", "✨", "💘", "🌸"];
+    heart.textContent = hearts[
+        Math.floor(Math.random() * hearts.length)
+    ];
+    heart.style.left = random(0, 100) + "vw";
+    heart.style.fontSize = random(15, 30) + "px";
+    heart.style.animationDuration = random(5, 10) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createHeart, 500);
+const countdownBox = document.getElementById("countdownBox");
+const countNumber = document.getElementById("countNumber");
+const cakeSection = document.getElementById("cakeSection");
+const finalMessage = document.getElementById("finalMessage");
+const cakeCaption = document.getElementById("cakeCaption");
+const cakeSlice = document.getElementById("cakeSlice");
+let count = 5;
+const countdownTimer = setInterval(() => {
+    count--;
+    if (count > 0) {
+        countNumber.textContent = count;
+        countNumber.style.animation = "none";
+        void countNumber.offsetWidth;
+        countNumber.style.animation = "numberPop .8s ease";
+    } else {
+        clearInterval(countdownTimer);
+        countdownBox.style.display = "none";
+        cakeSection.style.display = "flex";
+        grandFireworksShow();
+        setTimeout(() => {
+            document.querySelectorAll(".flame").forEach(flame => {
+                flame.classList.add("out");
+            });
+            cakeCaption.textContent =
+                "Your wish is on its way to the universe! ✨";
+            createFirework(width / 2, height / 2);
+        }, 2500);
+        setTimeout(() => {
+            cakeSlice.classList.add("cut");
+            cakeCaption.textContent =
+                "A little slice of happiness, just for you! 🎂";
+            createFirework(width * 0.35, height * 0.4);
+            createFirework(width * 0.65, height * 0.4);
+        }, 4000);
+        setTimeout(() => {
+            cakeSection.style.display = "none";
+            finalMessage.style.display = "block";
+            fireworksActive = true;
+            for (let i = 0; i < 18; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        random(width * 0.05, width * 0.95),
+                        random(height * 0.05, height * 0.7)
+                    );
+                }, i * 150);
+            }
+        }, 6500);
+    }
+}, 1000);
+</script>
+</body>
+</html>

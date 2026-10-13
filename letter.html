@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Love Letter ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --wine: #70253c;
+    --rose: #c46b80;
+    --gold: #d8b16c;
+    --paper: #f8e8ca;
+    --ink: #58303b;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 50% 0%, #774052, transparent 65%),
+        linear-gradient(140deg, #251019, #4b2534 55%, #1c0c15);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+}
+.lights {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+.light {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffe8b0;
+    box-shadow: 0 0 9px 3px #f9c66c88;
+    animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+    from { opacity: .25; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+.page {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    padding: 42px 16px 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.eyebrow {
+    color: #f1d5c0;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(43px, 8vw, 67px);
+    font-weight: normal;
+    color: #f7d4d9;
+    text-align: center;
+    text-shadow: 0 0 20px #f2a5ba44;
+}
+.intro {
+    color: #f1cbd2;
+    font: 19px 'Dancing Script', cursive;
+    text-align: center;
+    margin: 10px 0 32px;
+}
+.decor {
+    position: fixed;
+    z-index: 1;
+    pointer-events: none;
+    animation: float 5s ease-in-out infinite;
+}
+.rose { font-size: 29px; }
+.butterfly { font-size: 23px; }
+.rose.one {
+    top: 20%;
+    left: 3%;
+}
+.rose.two {
+    right: 3%;
+    bottom: 18%;
+    animation-delay: 1.5s;
+}
+.butterfly.one {
+    right: 8%;
+    top: 15%;
+}
+.butterfly.two {
+    left: 6%;
+    bottom: 27%;
+    animation-delay: 2s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+/* Envelope */
+.envelope-area {
+    width: 100%;
+    max-width: 560px;
+    perspective: 1000px;
+    margin-bottom: 25px;
+}
+.envelope {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #d9a0a7;
+    border-radius: 4px;
+    background: linear-gradient(140deg, #c77b8d, #792c45);
+    box-shadow: 0 22px 50px #0007;
+    transition: transform .4s;
+}
+.envelope:hover {
+    transform: translateY(-4px);
+}
+.envelope:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: linear-gradient(145deg, #e2a6b0, #a84d67);
+    clip-path: polygon(0 0, 100% 0, 50% 66%);
+    transform-origin: top;
+    transition: transform .8s;
+}
+.envelope.open:before {
+    transform: rotateX(180deg);
+}
+.envelope:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(145deg, #87374f, #cb8292);
+    clip-path: polygon(0 100%, 0 0, 50% 61%, 100% 0, 100% 100%);
+}
+.envelope-label {
+    position: absolute;
+    z-index: 4;
+    top: 128px;
+    width: 100%;
+    text-align: center;
+    color: #fff0de;
+    font: 25px 'Dancing Script', cursive;
+}
+.seal {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 74px;
+    transform: translateX(-50%);
+    width: 67px;
+    height: 67px;
+    border: 2px solid #e9ca8c;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff0d5;
+    font-size: 32px;
+    background: radial-gradient(circle at 30% 25%, #f0bdc7, #a93d5c 75%);
+    box-shadow: 0 5px 14px #2a0c18aa;
+}
+.envelope.open .seal,
+.envelope.open .envelope-label {
+    opacity: 0;
+}
+/* Vintage parchment */
+.letter {
+    display: none;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 600px;
+    padding: 43px 34px 35px;
+    border: 1px solid #d0a56c;
+    outline: 5px solid #e4c69b;
+    outline-offset: -11px;
+    background:
+        radial-gradient(ellipse at 0% 0%, #b7854b38, transparent 42%),
+        radial-gradient(ellipse at 100% 100%, #a36a4529, transparent 42%),
+        linear-gradient(135deg, #fff1d7, #f3dfbb 55%, #f9e9ce);
+    box-shadow:
+        0 22px 55px #0008,
+        inset 0 0 35px #a4774020;
+    transform-origin: top center;
+}
+.letter:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, #9d69352b, transparent 5%, transparent 95%, #9d69352b),
+        linear-gradient(0deg, #9d693522, transparent 5%, transparent 95%, #9d693522);
+}
+.letter.show {
+    display: block;
+    animation: openPaper 1.3s ease forwards;
+}
+@keyframes openPaper {
+    0% {
+        opacity: 0;
+        transform: perspective(900px) rotateX(-18deg) translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(900px) rotateX(0) translateY(0);
+    }
+}
+.paper-corner {
+    position: absolute;
+    color: #a56c62;
+    font-size: 26px;
+    opacity: .7;
+}
+.top-left { top: 14px; left: 17px; }
+.top-right { top: 14px; right: 17px; transform: scaleX(-1); }
+.bottom-left { bottom: 14px; left: 17px; }
+.bottom-right { bottom: 14px; right: 17px; transform: scaleX(-1); }
+.letter-heading {
+    text-align: center;
+    padding: 8px 0 23px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid #c5a078;
+}
+.letter-heading small {
+    display: block;
+    color: #987164;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.letter-heading h2 {
+    color: #85374e;
+    font: normal clamp(36px, 7vw, 48px) 'Great Vibes', cursive;
+}
+.heart-divider {
+    color: #a84b61;
+    letter-spacing: 7px;
+    margin-top: 10px;
+}
+.letter-content {
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.95;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+.greeting {
+    font: 27px 'Dancing Script', cursive;
+    color: #8d3b51;
+    margin-bottom: 20px;
+}
+.paragraph {
+    margin: 0 0 24px;
+}
+.paragraph:last-child {
+    margin-bottom: 0;
+}
+.romantic-line {
+    color: #87374e;
+    font-style: italic;
+}
+.signature {
+    display: none;
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid #c5a078;
+    text-align: right;
+    color: #87374e;
+    font: 22px/1.7 'Dancing Script', cursive;
+}
+.signature .name {
+    display: inline-block;
+    font: 39px 'Great Vibes', cursive;
+}
+/* Pink ribbon */
+.ribbon-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 39px auto 0;
+}
+.ribbon {
+    position: relative;
+    width: 128px;
+    height: 24px;
+    background: linear-gradient(90deg, #b9516d, #f0adbb, #b9516d);
+    box-shadow: 0 3px 8px #67243b30;
+}
+.ribbon:before,
+.ribbon:after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    width: 40px;
+    height: 35px;
+    border: 7px solid #dc8c9f;
+    border-radius: 50% 50% 12% 50%;
+    z-index: -1;
+}
+.ribbon:before {
+    left: -26px;
+    transform: rotate(25deg);
+}
+.ribbon:after {
+    right: -26px;
+    transform: scaleX(-1) rotate(25deg);
+}
+.ribbon-tail {
+    position: absolute;
+    top: 23px;
+    left: 43px;
+    width: 23px;
+    height: 32px;
+    background: linear-gradient(90deg, #b9516d, #f0adbb);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+}
+.locket {
+    width: 56px;
+    height: 56px;
+    margin: 38px auto 0;
+    border-radius: 50%;
+    border: 2px solid #d3ac6c;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 30% 25%, #f6dfad, #b88944);
+    color: #842d47;
+    font-size: 28px;
+    box-shadow: 0 0 18px #d7aa5b44;
+}
+.next-btn {
+    display: none;
+    margin-top: 29px;
+    padding: 14px 30px;
+    color: #ffead1;
+    font: 17px 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+    border: 1px solid #d8b16c;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #87334d, #501b31);
+    box-shadow: 0 7px 20px #0004;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+}
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 25px #d68a9c33;
+}
+.next-btn.show {
+    display: block;
+    animation: fadeIn .8s ease;
+}
+.footer {
+    color: #eec9ce;
+    text-align: center;
+    font: 18px 'Dancing Script', cursive;
+    margin-top: 31px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Falling petals */
+.petal {
+    position: fixed;
+    top: -35px;
+    z-index: 5;
+    pointer-events: none;
+    animation: falling linear forwards;
+}
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(500deg);
+        opacity: .1;
+    }
+}
+/* Mobile */
+@media (max-width: 480px) {
+    .page {
+        padding: 35px 17px 45px;
+    }
+    .intro {
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+    .envelope {
+        height: 200px;
+    }
+    .letter {
+        padding: 38px 23px 30px;
+    }
+    .letter-heading {
+        margin-bottom: 22px;
+    }
+    .letter-content {
+        font-size: 18px;
+        line-height: 1.9;
+    }
+    .greeting {
+        font-size: 25px;
+    }
+    .paragraph {
+        margin-bottom: 22px;
+    }
+    .letter-heading small {
+        letter-spacing: 2px;
+    }
+    .rose { font-size: 24px; }
+    .butterfly { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *:before, *:after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+<body>
+<div class="lights" id="lights"></div>
+<div class="decor rose one">🌹</div>
+<div class="decor rose two">🌹</div>
+<div class="decor butterfly one">🦋</div>
+<div class="decor butterfly two">🦋</div>
+<main class="page">
+    <p class="eyebrow">A little piece of my heart</p>
+    <h1 class="main-title">Happy Birthday My Love</h1>
+    <p class="intro">
+        A letter written with all my love... ♡
+    </p>
+    <div class="envelope-area" id="envelopeArea">
+        <div class="envelope" id="envelope" onclick="openLetter()">
+            <div class="envelope-label">
+                Open this my Sweetheart... 💌
+            </div>
+            <div class="seal">♥️</div>
+        </div>
+    </div>
+    <article class="letter" id="letter">
+        <span class="paper-corner top-left">❧</span>
+        <span class="paper-corner top-right">❧</span>
+        <span class="paper-corner bottom-left">❧</span>
+        <span class="paper-corner bottom-right">❧</span>
+        <header class="letter-heading">
+            <small>For the one who owns my heart</small>
+            <h2>Happy Birthday My JAAN</h2>
+            <div class="heart-divider">♡ ── ♥️ ── ♡</div>
+        </header>
+        <section class="letter-content">
+            <p class="greeting">Dear My Love, miss Rafiya ❤️</p>
+            <div id="typedLetter"></div>
+        </section>
+        <div class="signature" id="signature">
+            Always Yours,<br>
+            <span class="name">Affan ♡</span>
+        </div>
+        <div class="ribbon-wrap">
+            <div class="ribbon">
+                <span class="ribbon-tail"></span>
+            </div>
+        </div>
+        <div class="locket">♥️</div>
+    </article>
+    <button class="next-btn" id="nextBtn" onclick="nextPage()">
+        click here Rafiya ♡ →
+    </button>
+    <p class="footer">
+        HAPPY BIRTHDAY RAFIYA 💗
+    </p>
+</main>
+<script>
+/* Fairy lights */
+function createLights() {
+    const container = document.getElementById("lights");
+    for (let i = 0; i < 35; i++) {
+        const light = document.createElement("span");
+        light.className = "light";
+        light.style.left = Math.random() * 100 + "%";
+        light.style.top = Math.random() * 100 + "%";
+        light.style.animationDelay = Math.random() * 3 + "s";
+        light.style.animationDuration =
+            (1.5 + Math.random() * 2.5) + "s";
+        container.appendChild(light);
+    }
+}
+/* YOUR COMPLETE LOVE LETTER */
+const paragraphs = [
+`This letter is for you and
+There are lot of things I want to express, but this page can't hold them all. The day I texted you, I didn't think it would take us this far, and I thank Allah that He brought us together during our down times. We supported and helped each other, and look where we are now. 🫠`,
+`From where we started, I never even thought we would come this far. And now, I love having you in my life. You have become such a special part of my world, Rafiya, and I'm so grateful for our journey together. ❤️`,
+`And Rafiya, I'm so excited and happy for this day. I'm sorry too because I can't celebrate it with you, but I promise you I will meet you soon, Inshallah. 🥰 I wish I could be there with you and see that beautiful smile on your face on your special day.`,
+`It's been 2 years that we've been together. There have been many ups and downs, but we choose each other, not the topic or the problem between us. No matter what happens, I want us to keep understanding each other and choosing our relationship.
+May Allah always keep us safe from evil eyes, and I wish you a very, very happy birthday, my jaan. ❤️`,
+`May Allah always keep you happy and bring happiness into your family. May Allah grant a long and blessed life to you and your Ammi, and may He show your brother the right path and guide him towards a successful career. 💞 I pray that happiness, peace and success always surround your family.`,
+`I remember every one of our meetings — May 5, June 30, August 19, October 22, December 29, and our last June 4. Every memory means something to me, and I carry those moments close to my heart.
+I know that along the way, we made many boundaries and had our own situations to deal with, but my love for you is still the same as it was when I first fell for you. 😘`,
+`I know I've hurt you many times, and I couldn't always take care of you the way you expected me to. Still, you're here with me, my love, and that means so much to me.
+May Allah guide you, support you in every situation, and make your studies easier. Half of your course is already completed, and I pray that you achieve even more success and make all your dreams come true. 💞 I'm always proud of you, Rafiya.`,
+`May Allah always keep you with me and give me the strength and sabar to understand you, handle our difficult moments, and love you better every day. 😁😝 I know we are perfect, but I want us to keep growing together and making our bond stronger.`,
+`There are so many things left to say, but I'm ending this letter here, my love. Please take care of yourself. I'm here with you, here for your support, here to be your strength, and here to remember you in my prayers.
+Inshallah, you'll stay beside me for all the years Allah grants us. I want to keep making memories with you, celebrating your happiness, supporting your dreams, and loving you through every chapter of our lives. 🕊️`,
+`AND ONCE AGAIN, HAPPIEST BIRTHDAY RAFIYA JAAN! 🎂❤️🥳
+May your 21st year bring you endless happiness, beautiful memories, success, good health and countless reasons to smile. May Allah accept your duas and bless you with everything that is good for you.
+I love you, my jaan. Happy 21st birthday, my sweetheart. ❤️💞`
+];
+let opened = false;
+function openLetter() {
+    if (opened) return;
+    opened = true;
+    const envelope = document.getElementById("envelope");
+    const area = document.getElementById("envelopeArea");
+    const letter = document.getElementById("letter");
+    envelope.classList.add("open");
+    setTimeout(() => {
+        area.style.display = "none";
+        letter.classList.add("show");
+        setTimeout(() => {
+            runTyping();
+        }, 1000);
+    }, 600);
+}
+/* Type each paragraph with proper spacing */
+function runTyping() {
+    const target = document.getElementById("typedLetter");
+    let pIndex = 0;
+    let charIndex = 0;
+    let current = document.createElement("p");
+    current.className = "paragraph";
+    target.appendChild(current);
+    const timer = setInterval(() => {
+        const text = paragraphs[pIndex];
+        current.textContent += text.charAt(charIndex);
+        charIndex++;
+        if (charIndex >= text.length) {
+            pIndex++;
+            charIndex = 0;
+            if (pIndex >= paragraphs.length) {
+                clearInterval(timer);
+                document.getElementById("signature").style.display = "block";
+                document.getElementById("nextBtn").classList.add("show");
+                createPetals(20);
+                return;
+            }
+            current = document.createElement("p");
+            current.className = "paragraph";
+            target.appendChild(current);
+        }
+    }, 18);
+}
+/* Falling romantic petals */
+function createPetals(amount) {
+    const symbols = ["🌸", "♡", "💗"];
+    for (let i = 0; i < amount; i++) {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+        petal.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.fontSize = (12 + Math.random() * 12) + "px";
+        petal.style.animationDuration = (6 + Math.random() * 5) + "s";
+        petal.style.animationDelay = Math.random() * 3 + "s";
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 12000);
+    }
+}
+/* Next page: surprise.html */
+function nextPage() {
+    window.location.href = "surprise.html";
+}
+createLights();
+</script>
+</body>
+</html>

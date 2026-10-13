@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Miss Rafiya Mahaveen ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#48142f,#100713 65%);
+  color:white;
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
+}
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px;
+  padding:22px 10px;
+  border-bottom:1px solid #ff5b9d44;
+}
+nav a{
+  color:#ffe4ef;
+  text-decoration:none;
+  font-size:15px;
+  transition:.3s;
+}
+nav a:hover{color:#ff5b9d}
+.heart{
+  position:fixed;
+  bottom:-30px;
+  color:#ff5b9d;
+  animation:float 7s linear infinite;
+  pointer-events:none;
+}
+@keyframes float{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+.hero{
+  min-height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+}
+.tag{
+  color:#ff9bc2;
+  letter-spacing:4px;
+  font-size:12px;
+  text-transform:uppercase;
+}
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(65px,12vw,115px);
+  line-height:1.15;
+  color:#ff9bc9;
+  text-shadow:0 0 30px #ff368b77;
+  margin:25px 0;
+}
+h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(17px,4vw,25px);
+  letter-spacing:3px;
+  line-height:1.8;
+}
+p{
+  max-width:500px;
+  line-height:1.8;
+  font-size:19px;
+  color:#f8dce9;
+  margin-top:18px;
+}
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 28px;
+  border:1px solid #ff5b9d;
+  border-radius:40px;
+  background:linear-gradient(100deg,#ff408d,#a62b70);
+  color:white;
+  text-decoration:none;
+  font-size:17px;
+  box-shadow:0 0 25px #ff408d55;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 35px #ff408d99;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  color:#cba6ba;
+}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html">Home ♡</a>
+</nav>
+<section class="hero" id="home">
+<div class="tag">birthday wishes from AFFAN</div>
+<h1>Happy BirthdaY<br>Miss Rafiya Mahaveen ♡</h1>
+<h2>
+Today is YOUR day My Jaan! ❤️🥹 <br>
+
+
+ Mey Allaha bless you with success and happiness in your life 🥰 <br>And give you a long healthy life My Love and keep you always with me ❤️<br><br><br>
+Honestly, I’ve been waiting for this beautiful day for so long,<br> and now that it’s finally here, I can’t explain how happy and excited I am.<br> Today is all about you Sweetheart,<br> and I just want to make you feel as special as you truly are to me.<br><br><br>
+
+Happiest Birthday my girl Raffiya! 🎂💕 <br>May Allah bless you with endless happiness, success, good health,<br> and all the beautiful things your heart wishes for.<br><br><br>
+
+Jaan, today is your day, and I want you to enjoy every little moment of it. <br>There are so many beautiful things waiting for you on this little journey,<br> and I hope each one brings a smile to your face. 🫶🏻✨<br><br><br>
+
+I hope this birthday becomes one of those beautiful memories <br>that you’ll always look back on with a smile.<br><br><br>
+
+Once again, happiest birthday, meri jaan, Rafiya! ❤️🎂<br><br>
+
+May your smile never fade, may your heart always stay happy,<br> and may life bring you more beautiful moments than you can imagine.<br> You deserve all the happiness in this world, my Raffu. 🥹💗<br><br>
+</h2>
+<p>
+there are little things to shuowup <br>like cute moments of my love <br>how sweet care and loveable my girl is❤️<br>
+and there are couple pictures of use <br> where the best memories we created 
+</p>
+<a class="btn" href="gallery.html">
+Click Here Rafiya →
+</a>
+</section>
+<footer>HAPPY BIRTHDAY JAAN🥂❤️</footer>
+<script>
+function createHeart(){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent=Math.random()>.5?'♥️':'♡';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(15+Math.random()*20)+'px';
+  h.style.animationDuration=(5+Math.random()*5)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+setInterval(createHeart,500);
+</script>
+</body>
+</html>

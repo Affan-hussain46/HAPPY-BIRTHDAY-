@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Gallery ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  position:relative;
+  isolation:isolate;
+  min-height:100vh;
+  padding:22px 12px 35px;
+  background:#180914;
+  color:white;
+  font-family:'Cormorant Garamond',serif;
+  text-align:center;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:url("assets/images/couple.jpg") center center/cover no-repeat;
+  opacity:0.30;
+  pointer-events:none;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(
+    180deg,
+    rgba(25,5,19,.70),
+    rgba(37,8,28,.76),
+    rgba(15,4,15,.88)
+  );
+  pointer-events:none;
+}
+
+header{
+  max-width:750px;
+  margin:28px auto 30px;
+}
+
+.tagline{
+  font-size:14px;
+  letter-spacing:2px;
+  color:#ffd2e5;
+}
+
+h1{
+  font:clamp(45px,10vw,76px) 'Great Vibes',cursive;
+  color:#ffb2d4;
+  text-shadow:0 0 25px #ff408b88;
+  margin:20px 0 12px;
+}
+
+.subtitle{
+  font-size:19px;
+  color:#ffe4ef;
+  line-height:1.5;
+}
+
+.heart-line{
+  margin-top:18px;
+  color:#ff9bc9;
+  font-size:22px;
+}
+
+/* Nine photo frames */
+.cards{
+  width:100%;
+  max-width:900px;
+  margin:28px auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px 14px;
+}
+
+.card{
+  min-width:0;
+  padding:9px;
+  border:1px solid #ff9bc988;
+  border-radius:17px;
+  background:rgba(255,225,240,.12);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 8px 25px #0005;
+  transition:transform .3s,box-shadow .3s;
+}
+
+.card:nth-child(3n+1){
+  transform:rotate(-2deg);
+}
+
+.card:nth-child(3n+2){
+  transform:rotate(2deg);
+}
+
+.card:nth-child(3n){
+  transform:rotate(-1deg);
+}
+
+.card:hover{
+  transform:translateY(-4px) rotate(0deg);
+  box-shadow:0 8px 25px #ff408b44;
+}
+
+.photo{
+  width:100%;
+  height:190px;
+  overflow:hidden;
+  border-radius:12px;
+  background:linear-gradient(135deg,#72284d,#25112f);
+  border:1px solid #ffb2d466;
+  cursor:zoom-in;
+}
+
+.photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .4s;
+}
+
+.card:hover .photo img{
+  transform:scale(1.04);
+}
+.intro {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 1.8;
+  color: #ffe4ef;
+  text-align: center;
+}
+h2{
+  font:clamp(22px,3.5vw,30px) 'Great Vibes',cursive;
+  color:#ffc2df;
+  margin:12px 0 6px;
+}
+
+.card p{
+  font-size:16px;
+  line-height:1.35;
+  color:#ffe4ef;
+  padding-bottom:5px;
+}
+
+/* Full-screen photo popup */
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(10,2,10,.94);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  align-items:center;
+  justify-content:center;
+  padding:55px 15px 25px;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.popup.show{
+  display:flex;
+  opacity:1;
+}
+
+.popup img{
+  display:block;
+  max-width:95%;
+  max-height:85vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:12px;
+  border:2px solid #ff9bc9;
+  box-shadow:0 0 35px #ff408b55;
+  animation:zoomIn .3s ease;
+}
+
+.close-popup{
+  position:absolute;
+  top:15px;
+  right:20px;
+  width:44px;
+  height:44px;
+  border:1px solid #ff9bc9;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ec4389,#a51e65);
+  color:white;
+  font-size:29px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff408b55;
+}
+
+.popup-caption{
+  position:absolute;
+  bottom:12px;
+  left:15px;
+  right:15px;
+  color:#ffd2e5;
+  font-size:17px;
+  text-align:center;
+}
+
+@keyframes zoomIn{
+  from{
+    transform:scale(.82);
+    opacity:.4;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.back{
+  display:inline-block;
+  margin:22px 0 10px;
+  padding:12px 25px;
+  border:1px solid #ff9bc9;
+  border-radius:35px;
+  background:linear-gradient(135deg,#ec4389,#a51e65);
+  color:white;
+  font-size:16px;
+  text-decoration:none;
+  box-shadow:0 0 20px #ff408b44;
+  transition:transform .3s,box-shadow .3s;
+}
+
+.back:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px #ff408b88;
+}
+
+.footer{
+  margin-top:18px;
+  font-size:22px;
+  line-height: 1.8;
+  color:#f7c9dd;
+}
+
+/* Back and Next buttons */
+.page-navigation{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:20px auto;
+}
+
+@media(max-width:550px){
+  body{
+    padding:18px 10px 28px;
+    .intro {
+  font-size: 19px;
+  line-height: 1.7;
+  padding: 0 5px;
+  .footer{
+    font-size: 18px;
+    line-height: 1.8;
+  }
+}
+  }
+
+  header{
+    margin-top:25px;
+  }
+
+  .tagline{
+    font-size:11px;
+    letter-spacing:1.5px;
+  }
+
+  .subtitle{
+    font-size:17px;
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px 10px;
+  }
+
+  .card{
+    padding:7px;
+    border-radius:14px;
+  }
+
+  .photo{
+    height:155px;
+  }
+
+  h2{
+    font-size:24px;
+  }
+
+  .card p{
+    font-size:14px;
+  }
+
+  .popup img{
+    max-width:100%;
+    max-height:80vh;
+  }
+
+  .close-popup{
+    top:12px;
+    right:12px;
+  }
+
+  .page-navigation{
+    gap:8px;
+  }
+
+  .page-navigation .back{
+    font-size:13px;
+    padding:12px 15px;
+  }
+}
+
+@media(max-width:360px){
+  .photo{
+    height:125px;
+  }
+
+  h2{
+    font-size:21px;
+  }
+
+  .card p{
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <p class="tagline">
+      ME with my LOVE where <br>
+    ♡ EVERY MOMENT IS PRECIOUS ♡</p>
+
+  <h1>Our Love Gallery 💗</h1>
+
+<p class="intro">
+These are our unforgettable moments 🥹💗<br><br>
+
+Where we both enjoyed ourselves and spent time together 🫶🏻💕<br><br>
+
+I get excited to meet you every single day 🥹💗<br><br>
+
+These are just ordinary moments but ones I'll never forget 💞✨<br><br>
+
+I love spending time with you and I never realize how quickly time flies when I'm with you 🥹💗<br><br>
+
+Whenever we meet I forget all my pain worries tension and stress 🫂💗<br><br>
+
+You are like medicine for me my love 💊💖<br><br>
+
+No matter how tired I am after seeing you I feel free and refreshed 🥹🫶🏻<br><br>
+
+You are my little therapist 🥹💗<br><br>
+
+I love listening to your nonsense talks silly words and all the little things you do 😂💕<br><br>
+
+You are my princess and the one who knows how to handle me 🥰👸🏻<br><br>
+
+Trust me I love you more than you think and more than words can ever express ❤️🫶🏻<br><br>
+
+Sometimes love comes with pain too 🥺💗<br><br>
+
+These are the moments I would relive in the last 7 minutes of my life the happiest moments I could never forget 🥹🤍<br><br>
+
+Let's look back at our lovely moments the memories that will always stay in my heart 🥰💞<br><br>
+
+Every picture holds a little piece of my heart ♡ 💗
+</p>
+
+  <div class="heart-line">♡ ───── ♥️ ───── ♡</div>
+</header>
+
+<div class="cards">
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple1.jpg" alt="Our first memory">
+    </div>
+    <h2>i'll never leave this hand💕</h2>
+    <p>i will hold this till my last breath   ✨</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple2.jpg" alt="My favourite person">
+    </div>
+    <h2>our first meet  🫶🏻</h2>
+    <p>the day i never forget ❤️</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple3.jpg" alt="Beautiful days">
+    </div>
+    <h2>my happy place 🌸</h2>
+    <p>a moment i wish i could relive forever 🥹</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple4.jpg" alt="Forever special">
+    </div>
+    <h2>Hold my hand forever🥹♾️</h2>
+    <p>this is the proof that you are my future💗</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple5.jpg" alt="Our sweetest moment">
+    </div>
+    <h2>both eyes 🌹</h2>
+    <p>the way am looking and expressing my love  ❤️</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple6.jpg" alt="Our forever memory">
+    </div>
+    <h2>Our Forever ♾️</h2>
+    <p>my sholder always there for u to lean on 💗</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple7.jpg" alt="A special smile">
+    </div>
+    <h2>mahendi🌷</h2>
+    <p>one day same name will be written besides yours on nikha 💖</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple8.jpg" alt="Our little moments">
+    </div>
+    <h2> EYESS 🦋</h2>
+    <p>two hearts expressing love through EYES🫶🏻</p>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="assets/images/couple9.jpg" alt="Forever together">
+    </div>
+    <h2>Just You & Me 💞</h2>
+    <p>the moment i feel safe and strong  ❤️</p>
+  </div>
+
+</div>
+
+<p class="footer">These are the only pictures I have of you my love 😭💗<br><br>
+
+The rest got deleted somehow 👉🏻👈🏻🥺<br><br>
+
+These are all I have left to keep our memories alive <br>and i remember every moment of us🥹❤️<br><br>
+
+This is all I have to hold on to now 😭💗<br><br>
+
+Whenever my mood is bad I look at these pictures and somehow I start feeling better 🥹💕<br><br>
+
+Just looking at them makes me happy I start smiling and my face lights up again 🥰🫶🏻<br><br>
+
+But thank you for taking time out for me and giving me some of the best moments of my life ❤️🥹<br><br>
+
+I want to create many more beautiful moments like these with you ones that we will never ever forget 🫂💖<br><br>
+
+And I'm really waiting to meet you and recreate these moments all over again 🥹❤️<br><br>
+
+Once again HAPPY BIRTHDAY MY GIRL 👸🏻🎂💗 ❤️</p>
+
+<!-- Back and Next navigation -->
+<div class="page-navigation">
+  <a class="back" href="gallery.html">
+    Back to previous page rafiya
+  </a>
+
+  <a class="back" href="letter.html">
+    click here rafiya
+  </a>
+</div>
+
+<!-- Photo Popup -->
+<div class="popup" id="photoPopup" role="dialog"
+     aria-modal="true" aria-label="Photo preview">
+
+  <button class="close-popup" id="closePopup"
+          aria-label="Close photo popup">×</button>
+
+  <img id="popupImage" src="" alt="Enlarged memory">
+
+  <p class="popup-caption" id="popupCaption"></p>
+</div>
+
+<script>
+const popup = document.getElementById("photoPopup");
+const popupImage = document.getElementById("popupImage");
+const popupCaption = document.getElementById("popupCaption");
+const closePopup = document.getElementById("closePopup");
+
+function openPopup(image, caption){
+  popupImage.src = image.src;
+  popupImage.alt = image.alt;
+  popupCaption.textContent = caption;
+  popup.style.display = "flex";
+
+  requestAnimationFrame(() => {
+    popup.classList.add("show");
+  });
+
+  document.body.style.overflow = "hidden";
+}
+
+function hidePopup(){
+  popup.classList.remove("show");
+  popup.style.display = "none";
+  popupImage.src = "";
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".card").forEach(card => {
+  const image = card.querySelector(".photo img");
+  const heading = card.querySelector("h2");
+
+  image.addEventListener("click", () => {
+    openPopup(image, heading.textContent);
+  });
+});
+
+closePopup.addEventListener("click", hidePopup);
+
+popup.addEventListener("click", event => {
+  if(event.target === popup){
+    hidePopup();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if(event.key === "Escape" && popup.style.display === "flex"){
+    hidePopup();
+  }
+});
+</script>
+
+</body>
+</html>

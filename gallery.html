@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Her Little World ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f4c3d2;
+    --lavender: #d9c8f4;
+    --peach: #f9d5c2;
+    --rose: #b44b70;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #fff0f5;
+    background: #190e19;
+    overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: url("assets/images/background.jpg") center / cover no-repeat;
+    opacity: 0.25;
+    transform: scale(1.04);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        135deg,
+        rgba(45, 17, 42, 0.78),
+        rgba(65, 29, 63, 0.72),
+        rgba(30, 16, 37, 0.85)
+    );
+}
+
+header {
+    text-align: center;
+    padding: 42px 15px 24px;
+}
+
+.eyebrow {
+    color: #f6bdd5;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 7vw, 49px);
+    line-height: 1.25;
+    margin: 14px 0;
+    color: #ffe0ed;
+    text-shadow: 0 0 25px rgba(255, 153, 202, 0.28);
+}
+
+h1 span {
+    color: #ff9dc6;
+}
+
+.intro {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 2;
+    color: #efd8e8;
+    white-space: pre-line;
+    text-align: center;
+   }
+    .intro br {
+    display: block;
+    content: "";
+    margin-top: 15px;
+}
+
+.little-heart {
+    color: #ff9fbe;
+    animation: heartbeat 1.8s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.13); }
+}
+
+.gallery {
+    width: calc(100% - 24px);
+    max-width: 850px;
+    margin: 25px auto 45px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 17px;
+    row-gap: 30px;
+    align-items: start;
+}
+
+.frame {
+    --tilt: -3deg;
+    position: relative;
+    min-width: 0;
+    padding: 8px 8px 12px;
+    border-radius: 4px;
+    color: #63384e;
+    background: linear-gradient(145deg, #fbe1e9, #f3cbdc);
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.35),
+        0 0 18px rgba(246, 166, 203, 0.10);
+    transform: rotate(var(--tilt));
+    transform-origin: top center;
+    animation:
+        floatIn 0.7s ease both,
+        pendulum 6s ease-in-out infinite;
+    transition: box-shadow 0.35s ease;
+}
+
+.frame:nth-child(4n + 2) {
+    --tilt: 3.5deg;
+    background: linear-gradient(145deg, #eee3ff, #d9c8f4);
+    animation-delay: 0.15s, -2s;
+}
+
+.frame:nth-child(4n + 3) {
+    --tilt: -4deg;
+    background: linear-gradient(145deg, #ffe7d9, #f8d0ba);
+    animation-delay: 0.25s, -4s;
+}
+
+.frame:nth-child(4n) {
+    --tilt: 2.5deg;
+    background: linear-gradient(145deg, #f9dce9, #e9c5e5);
+    animation-delay: 0.35s, -1s;
+}
+
+.frame::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 42px;
+    height: 15px;
+    background: rgba(255, 231, 194, 0.78);
+    transform: translateX(-50%) rotate(-5deg);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.frame:nth-child(even)::before {
+    transform: translateX(-50%) rotate(6deg);
+    background: rgba(223, 207, 255, 0.82);
+}
+
+@keyframes pendulum {
+    0%, 100% { rotate: -1.5deg; }
+    50% { rotate: 1.5deg; }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        translate: 0 15px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.frame:hover {
+    z-index: 5;
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, 0.38),
+        0 0 24px rgba(255, 164, 211, 0.35);
+}
+
+.frame img {
+    display: block;
+    width: 100%;
+    height: clamp(150px, 32vw, 290px);
+    object-fit: contain;
+    object-position: center;
+    background: rgba(67, 38, 57, 0.12);
+    border: 1px solid rgba(255,255,255,0.55);
+    cursor: zoom-in;
+    border-radius: 2px;
+}
+
+.caption {
+    min-height: 43px;
+    padding: 8px 2px 0;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: clamp(16px, 3.5vw, 23px);
+    line-height: 1.2;
+    color: #793d5b;
+    overflow-wrap: anywhere;
+}
+
+.frame:nth-child(4n + 2) .caption { color: #624778; }
+.frame:nth-child(4n + 3) .caption { color: #8b5143; }
+
+.heart-stamp {
+    position: absolute;
+    right: 10px;
+    bottom: 7px;
+    color: #c85d75;
+    font-size: 20px;
+    transform: rotate(12deg);
+    pointer-events: none;
+}
+
+.photo-viewer {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(17, 5, 20, 0.88);
+    backdrop-filter: blur(7px);
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.photo-viewer.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-content {
+    position: relative;
+    width: min(80vw, 440px);
+    height: 65vh;
+    padding: 10px 10px 48px;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #ffe5ef, #e5d4fa);
+    box-shadow:
+        0 0 25px rgba(255, 143, 195, 0.55),
+        0 0 65px rgba(193, 124, 220, 0.25);
+    transform: scale(0.82) rotate(-3deg);
+    transition: transform 0.35s ease;
+}
+
+.photo-viewer.active .popup-content {
+    transform: scale(1) rotate(0deg);
+}
+
+.popup-content img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: rgba(50, 20, 45, 0.08);
+}
+
+.popup-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    text-align: center;
+    font: 600 22px 'Caveat', cursive;
+    color: #793d5b;
+}
+
+.close-popup {
+    position: absolute;
+    top: -17px;
+    right: -15px;
+    width: 38px;
+    height: 38px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #b44b70;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(255, 140, 190, 0.5);
+}
+
+footer {
+    text-align: center;
+    padding: 13px 15px 35px;
+    color: #f4c8dc;
+    font-size: 18px;
+    line-height: 2.2;
+}
+
+footer .signature {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    color: #ffb3d0;
+}
+
+/* Navigation buttons */
+.page-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 10px 15px 40px;
+}
+
+.page-btn {
+    display: inline-block;
+    max-width: 100%;
+    padding: 13px 20px;
+    border: 1px solid #ffb3d0;
+    border-radius: 35px;
+    background: linear-gradient(135deg, #b44b70, #78345f);
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    text-align: center;
+    box-shadow: 0 0 18px rgba(255, 153, 202, 0.22);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.page-btn.next {
+    background: linear-gradient(135deg, #e75a97, #a82c70);
+}
+
+.page-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 153, 202, 0.4);
+}
+
+@media (max-width: 380px) {
+    .gallery {
+        width: calc(100% - 20px);
+        column-gap: 12px;
+        row-gap: 25px;
+    }
+
+    .frame { padding: 6px 6px 10px; }
+    .frame img { height: 155px; }
+    .caption { font-size: 16px; min-height: 38px; }
+    .heart-stamp { font-size: 17px; right: 7px; bottom: 6px; }
+
+    .popup-content {
+        width: 85vw;
+        height: 58vh;
+    }
+
+    .page-navigation { gap: 10px; }
+    .page-btn { padding: 12px 14px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <p class="eyebrow">her little Gallery ♡</p>
+
+    <h1>LET’S ADMIRE THE BEAUTY OF<br><span> MISS DR. RAFIYA MAHAVEEN✨♡</span></h1>
+
+    <p class="intro">
+      Every picture tells a cute little story about her <br>and shows how cute and beautiful my little princess is. 🥹💗
+
+The way Allah has created her is truly beautiful. ❤️
+
+Her beautiful EYES 👀
+Her smooth and shiny LONG HAIR 🎀
+Her pink, glossy LIPS 💋
+Her beautiful SMILE 😊
+Her beautiful HEART ❤️
+Her HAYA 🤍
+Her CHARACTER 🕊️
+Her LOVE 🫶🏻
+Her CARE 🥹
+Her EMOTIONS 💗
+
+And she is my DOCTOR. 🩺❤️
+
+And InshaAllah, one day, she will be a wonderful doctor and a beautiful daughter. 🤍
+
+I’ve expressed only 0.1% of her beauty here; the remaining 99.9% is beyond words. 🥹
+
+There is so much more about her that words can never fully express.
+
+She is my PRINCESS. 👑❤️
+
+Every picture has its own charm. 💗💗
+    </p>
+</header>
+
+<main class="gallery">
+
+    <div class="frame">
+        <img src="assets/images/memory1.jpg" alt="Her photo 1">
+        <p class="caption">my heart ❤️</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory2.jpg" alt="Her photo 2">
+        <p class="caption">my forest 💚</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory3.jpg" alt="Her photo 3">
+        <p class="caption">A preety babyy😘</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory4.jpg" alt="Her photo 4">
+        <p class="caption">hijabi doctorr😍</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory5.jpg" alt="Her photo 5">
+        <p class="caption">first PIC ❤️</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory6.jpg" alt="Her photo 6">
+        <p class="caption">my cutiee pie 🥰</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory7.jpg" alt="Her photo 7">
+        <p class="caption">my moon 🫠</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory8.jpg" alt="Her photo 8">
+        <p class="caption">her hairs ❤️ </p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory9.jpg" alt="Her photo 9">
+        <p class="caption">her eyess 👀</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory10.jpg" alt="Her photo 10">
+        <p class="caption">her lipss 🥰</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory11.jpg" alt="Her photo 11">
+        <p class="caption">gorgeous ❤️</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory12.jpg" alt="Her photo 12">
+        <p class="caption">My lil princess 😘</p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+    <div class="frame">
+        <img src="assets/images/memory13.jpg" alt="Her photo 13">
+        <p class="caption">her happiness🥰 </p>
+        <span class="heart-stamp">♡</span>
+    </div>
+
+</main>
+
+<footer>
+  These are just a few pictures of you, Raffu, <BR>but in every picture, I see something truly beautiful. 🥹❤️<BR><BR>
+
+Sometimes, words aren’t enough to describe how cute, pretty, and gorgeous you are. <BR>Every time I look at you, I find another reason to admire you.<BR> Your eyes, your smile, your little expressions your cute innocence 🫠<BR><BR>
+
+The first time I saw your photo I was honestly mesmerized by your beauty MashaAllah 🥹❤️<BR> And from that day until today nothing has changed.<BR> Even after becoming mine you still look just as beautiful as the girl I fell for at first sight.<BR> No matter how many years pass and how old we grow InshaAllah<BR> my eyes will always see the same beautiful Rafiya I fell in love with that day. 🫶🏻💗<BR><BR>
+
+
+If you see with my eyes you fall your self for each and every time when u see 🥰🫠<BR>
+How i can stop loving you ? You are the reason where my eyes cant stop staring 🫣👀 <BR><BR>
+
+
+You have this special way of making my attention stop at you, no matter what. <BR>And honestly, I could never get tired of admiring you. 🫶🏻<BR><BR>
+
+But beyond your beauty, it’s your heart, your character, your Haya,<BR> and the person you are that make you even more special to me. 🤍 🕊️<BR><BR><BR>
+
+You are my JAAN Rafiya. ♡<BR><BR>
+
+
+HAPPY BIRTHDAY, MY JAAN ! 🎂🎀❤️<BR><BR>
+
+And remember Jaan, these pictures are only a of your beauty. <BR>Some things are simply too beautiful to be fully expressed in words. 🥹💕
+<span class="little-heart">♥️</span>
+    <span class="signature">ITS YOUR DAYY♡ <br>HAPPY BIRTHDAY MY CUTIE PIE♥️</span>
+</footer>
+
+<!-- Back and Next navigation -->
+<nav class="page-navigation" aria-label="Page navigation">
+    <a class="page-btn" href="index.html">Back to previous page rafiya</a>
+    <a class="page-btn next" href="memories.html">click here rafiya</a>
+</nav>
+
+<!-- Photo popup -->
+<div class="photo-viewer" id="photoViewer" aria-hidden="true">
+    <div class="popup-content">
+        <button class="close-popup" id="closePopup" aria-label="Close photo">&times;</button>
+        <img id="previewPhoto" src="" alt="Enlarged memory">
+        <p class="popup-caption" id="popupCaption"></p>
+    </div>
+</div>
+
+<script>
+const viewer = document.getElementById("photoViewer");
+const preview = document.getElementById("previewPhoto");
+const popupCaption = document.getElementById("popupCaption");
+const closePopup = document.getElementById("closePopup");
+
+document.querySelectorAll(".frame img").forEach((img) => {
+    img.addEventListener("click", () => {
+        preview.src = img.src;
+        preview.alt = img.alt;
+
+        const caption = img.parentElement.querySelector(".caption");
+        popupCaption.textContent = caption ? caption.textContent : "";
+
+        viewer.classList.add("active");
+        viewer.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+function hidePopup() {
+    viewer.classList.remove("active");
+    viewer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    preview.src = "";
+}
+
+closePopup.addEventListener("click", hidePopup);
+
+viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) {
+        hidePopup();
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && viewer.classList.contains("active")) {
+        hidePopup();
+    }
+});
+</script>
+
+</body>
+</html>
